@@ -19,4 +19,4 @@ docker swarm init --advertise-addr 18.207.202.0
 Copy below token in worker
 docker swarm join --token SWMTKN-1-63zsd4a2kl14y8mi8f8gqix88tx0rf63ojknaffsxp5oulpp5r-eotyjj1pzpadpwslkj1m2k3ue 18.207.202.0:2377
 On leader-docker node ls
-docker service create --replicas 5 -p 8082:80 --name web nginx
+docker service create -p 8080:80 --name webserver --replicas 4 httpd
