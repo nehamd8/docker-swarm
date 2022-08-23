@@ -1,0 +1,22 @@
+#!/bin/bash
+sudo apt upgrade -y
+sudo apt update -y
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo apt install docker –y
+sudo systemctl start docker.service
+sudo systemctl status docker.service
+apt install docker.io
+
+
+install docker swarm on manager (server 1)
+docker swarm init --advertise-addr 18.207.202.0
+
+
+Copy below token in worker
+docker swarm join --token SWMTKN-1-63zsd4a2kl14y8mi8f8gqix88tx0rf63ojknaffsxp5oulpp5r-eotyjj1pzpadpwslkj1m2k3ue 18.207.202.0:2377
+On leader-docker node ls
+docker service create --replicas 5 -p 8082:80 --name web nginx
